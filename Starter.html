@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pets R' Us</title>
+
+	<link rel="stylesheet" href="css/main.css"> <!-- includes bootstrap -->
+
+  <!-- load angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+</head>
+<body class="container" ng-app="PetApp" ng-controller="PetCtrl">
+
+	<h1>Find a Pet Today!</h1>
+
+	<p>Search: <input type="text" ng-model="query" class="form-control"></p>
+
+	<table class="table">
+		<tr>
+			<th><a href="" ng-click="sortBy = 'animal_type'">Animal Type</a></th>
+			<th><a href="" ng-click="sortBy = 'current_location'">Current Location</a></th>
+		</tr>
+		<tr ng-repeat="pet in pets | orderBy:sortBy | filter:query">
+			<td>{{pet.animal_type}}</td>
+			<td>{{pet.current_location}}</td>
+		</tr>
+	</table>
+
+	<!-- load our script -->
+	<script src="js/pets.js"></script>
+
+</body>
+</html>
